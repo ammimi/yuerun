@@ -7,7 +7,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 
 urlpatterns = [
-    url(r'^snippets/$', views.AccountsList.as_view()),
-    url(r'^snippets/(?P<pk>[0-9]+)/$', views.AccountDetail.as_view()),
+    url(r'^$', views.AccountsList.as_view()),
+    url(r'^(?P<pk>[0-9]+)/$', views.AccountDetail.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)
