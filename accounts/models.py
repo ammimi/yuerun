@@ -15,11 +15,13 @@ class Account(models.Model):
     homepage = models.URLField(null=True, blank=True,verbose_name=u'主页')
     weixin = models.URLField(null=True, blank=True,verbose_name=u'微信')
     weibo = models.URLField(null=True, blank=True,verbose_name=u'微博')
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User,blank=True,null=True)
 
     @receiver(post_save, sender=User)
     def create_user_account(sender, instance=None, created=False, **kwargs):
+        print '1'
         if created:
+            print '2'
             Account.objects.get_or_create(user=instance, defaults={'display_name':instance.username})
 
     def __str__(self):

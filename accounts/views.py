@@ -11,11 +11,11 @@ from rest_framework import status
 
 class AccountsList(APIView):
     """
-    List all snippets, or create a new snippet.
+    List all accounts, or create a new account.
     """
     def get(self, request, format=None):
-        account = Account.objects.all()
-        serializer = AccountSerializers(Account, many=True)
+        accounts = Account.objects.all()
+        serializer = AccountSerializers(accounts, many=True)
         return Response(serializer.data)
     def post(self, request, format=None):
         serializer = AccountSerializers(data=request.data)

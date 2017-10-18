@@ -5,11 +5,10 @@ from rest_framework import serializers
 from accounts.models import Account
 from django.contrib.auth import get_user_model
 
-class AccountSerializers(serializers.HyperlinkedModelSerializer):
-    user = serializers.ReadOnlyField(source='user.username')
+class AccountSerializers(serializers.ModelSerializer):
     class Meta:
         model = Account
-        field = ('id','display_name','biography','homepage','weixin',)
+        fields = '__all__'
 
     def create(self, validated_data):
         return Account.objects.create(**validated_data)
